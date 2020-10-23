@@ -16,16 +16,24 @@
         <nav class="navbar navbar-dark bg-dark">
           
             <a style="color: white" class="navbar-toggler"><span class="navbar-toggler-icon"></span>Menu</a>
+            <a style="color: white" href="AltasBajasClientes.jsp" class="nav-link dropdown-toggle">Clientes</a>
+            <a style="color: white" href="AltasBajasProduc.jsp" class="nav-link dropdown-toggle">Productos</a>
+            <a style="color: white" href="Ordenes.jsp" class="nav-link dropdown-toggle">Ordenes de compra</a>
             <div class="dropdown">
-                <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle=dropdown"">Cerrar Sesion</a>
+                
+                <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cerrar Sesion</a>
                 <div class="dropdown-item text-center">
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
+                   
+                    <a><img src="WEB-INF/img/user1.png" height="80" width="80"></a>
+                    <a>Usuario</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="index.jsp" class="dropdown-item">Salir</a>
                 </div>
             </div>
         </nav>
+        <div class="container mt-4">
+            <h1>Bienvenido al sistema de <strong>Auto Partes</strong></h1>
+        </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
