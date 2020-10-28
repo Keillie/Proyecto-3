@@ -14,13 +14,32 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
-          
-            <a style="color: white" class="navbar-toggler"><span class="navbar-toggler-icon"></span>Menu</a>
-            <a style="color: white" href="AltasBajasClientes.jsp" class="nav-link dropdown-toggle">Clientes</a>
-            <a style="color: white" href="AltasBajasProduc.jsp" class="nav-link dropdown-toggle">Productos</a>
-            <a style="color: white" href="Ordenes.jsp" class="nav-link dropdown-toggle">Ordenes de compra</a>
+            
+        <li class="dropdown">
+        <a style="color: white" href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="AltasBajasClientes.jsp">Clientes</a></li>
+          <li><a href="CrearClientes.jsp">Crear Cliente</a></li>
+        </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a style="color: white"  href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="AltasBajasProduc.jsp">Productos</a></li>
+          <li><a href="CrearProductos.jsp">Ingresar Producto</a></li>
+        </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a style="color: white"  href="#" class="dropdown-toggle" data-toggle="dropdown">Ordenes de compra <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="Ordenes.jsp">Lista Orden</a></li>
+          <li><a href="CrearOrdenes.jsp">Crear Orden</a></li>
+        </ul>
+      </li>
+            
             <div class="dropdown">
-                
                 <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cerrar Sesion</a>
                 <div class="dropdown-item text-center">
                    
