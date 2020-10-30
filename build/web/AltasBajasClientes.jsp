@@ -4,6 +4,9 @@
     Author     : Otra (Nueva)
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Cliente"%>
+<%@page import="DAO.ClientesDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,12 +59,29 @@
                 </tr>
             </thead>
             <tbody>
+                 <%
+              //1. Crear una instancia DAO correpondiente a las carreras
+              ClientesDAO clientesDao = new ClientesDAO();
+              //2. Obtener todas las carreras de la base de datos
+              List<Cliente> clientes = clientesDao.getDBClientes();
+              //3. Iterar todas las carreras
+              int i=0;
+              for( Cliente cliente : clientes){
+              //4. Pintar el HTML que correponde a cada carrera
+                i++;
+              %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <th scope="row"><%=i%></th>
+                <td><%=cliente.getId()%></td>
+                <td><%=cliente.getNombre()%></td>
+                <td><%=cliente.getApellido()%></td>
+                <td><%=cliente.getCorreoElectronico()%></td>
+                <td><%=cliente.getTelefono()%></td>
+                <td><%=cliente.getTipoCliente()%></td>
+              </tr>
+              <% 
+               }
+              %> 
             </tbody>
         </table>
         <button type="submit" class="btn btn-primary" class="container mt-4 text-center" >Eliminar Cliente</button>

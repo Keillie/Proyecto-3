@@ -56,11 +56,11 @@
         <form action="CrearProductos.jsp" method="POST">
             <div class="form-group">
               <label for="nombreProducto">Nombre Producto: </label>
-              <input type="text" class="form-control" id="codigo" name="nombreProducto" aria-describedby="producto" >              
+              <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" aria-describedby="producto" >              
             </div>            
             <div class="form-group">
               <label for="precioUnitario">Precio Unitario: </label>
-              <input type="text" class="form-control" id="nombre" name="precioUnitario" aria-describedby="precio">
+              <input type="text" class="form-control" id="precioUnitario" name="precioUnitario" aria-describedby="precio">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>

@@ -70,6 +70,7 @@
               %>
               <tr>
                 <th scope="row"><%=i%></th>
+                
                 <td><%=producto.getNombreProducto()%></td>
                 <td><%=producto.getPrecioUnitario()%></td>
               </tr>

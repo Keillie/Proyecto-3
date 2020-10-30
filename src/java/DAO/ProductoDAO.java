@@ -23,7 +23,7 @@ public class ProductoDAO {
         List<Producto> productos = new ArrayList<Producto>();
         try {
             Statement statement = VariablesGlobales.conn.createStatement();
-            String consulta = " SELECT id, nombreProducto, precioUnitario"+
+            String consulta = " SELECT id, nombreproducto, preciounitario"+
                               " FROM productos";
             ResultSet rs = statement.executeQuery(consulta);
             while(rs.next()){
@@ -37,13 +37,14 @@ public class ProductoDAO {
 
     /**
     * Método sirve para persistir las carreras en la base de datos
-    * @param carrera
+    * @param producto
     */
     public void saveProducto(Producto producto){
         
         try {
             Statement statement = VariablesGlobales.conn.createStatement();
-            String dml = "INSERT INTO productos(nombreProducto,precioUnitario) VALUES("+
+            String dml = "INSERT INTO productos(id, nombreproducto,preciounitario) VALUES("+
+                    producto.getId() + ",'" +
                         producto.getNombreProducto() + ",'" + producto.getPrecioUnitario() + "')";
             System.out.println("dml = " + dml);
             statement.executeUpdate(dml);
