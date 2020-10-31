@@ -57,20 +57,27 @@
                 </tr>
             </thead>
             <tbody>
-                <%
+                
+              <%
               //1. Crear una instancia DAO correpondiente a las carreras
               ProductoDAO productoDao = new ProductoDAO();
+              
+              if(request.getParameter("botonEliminar") != null) {
+                  productoDao.deleteProducto();
+              }
+              
               //2. Obtener todas las carreras de la base de datos
               List<Producto> productos = productoDao.getDBProductos();
               //3. Iterar todas las carreras
               int i=0;
-              for( Producto producto : productos){
+              for(Producto producto : productos){
               //4. Pintar el HTML que correponde a cada carrera
                 i++;
               %>
+
               <tr>
                 <th scope="row"><%=i%></th>
-                
+                 <td><%=producto.getId()%></td>
                 <td><%=producto.getNombreProducto()%></td>
                 <td><%=producto.getPrecioUnitario()%></td>
               </tr>
@@ -79,7 +86,10 @@
               %>  
             </tbody>
         </table>
-            <button type="submit" class="btn btn-primary" class="container mt-4 text-center" >Eliminar Producto</button>
+            <form action="AltasBajasProduc.jsp" method="POST">
+                <button type="submit" class="btn btn-primary" id="botonEliminar" name="botonEliminar" class="container mt-4 text-center" >Eliminar Producto</button>
+            </form>
+            
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

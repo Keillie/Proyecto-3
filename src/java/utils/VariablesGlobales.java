@@ -10,7 +10,7 @@ public class VariablesGlobales {
     public static final String DRIVER_DB = "org.postgresql.Driver";
     public static final String URL_DB ="jdbc:postgresql://localhost/autoPartesdb";
     public static final String USER_DB = "postgres";
-    public static final String PASSWORD_DB = "123456";
+    public static final String PASSWORD_DB = "postgres";
     public static Connection conn;
     static{
         try {

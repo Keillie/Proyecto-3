@@ -27,7 +27,7 @@ public class Cliente {
      * @param apellido
      * @param correoElectronico
      * @param telefono
-     * @param repuesto
+     * @param tipoCliente
      */
     public Cliente( String nombre, String apellido, String correoElectronico, String telefono, String tipoCliente) {
         this.id = sigIdCliente++;

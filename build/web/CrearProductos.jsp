@@ -3,7 +3,7 @@
     Created on : Oct 27, 2020, 1:26:03 PM
     Author     : Otra (Nueva)
 --%>
-
+<%@page import="java.util.List"%>
 <%@page import="Modelo.Producto"%>
 <%@page import="DAO.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,12 +47,7 @@
         <div class="container mt-4 text-center">
             <h1><strong>Ingresar Productos</strong></h1>
         </div>
-        <% 
-            String nombreProducto = request.getParameter("nombreProducto");
-            String precioUnitario = request.getParameter("precioUnitario");
-            if(nombreProducto==null && precioUnitario==null){
-        %>
-
+        
         <form action="CrearProductos.jsp" method="POST">
             <div class="form-group">
               <label for="nombreProducto">Nombre Producto: </label>
@@ -64,21 +59,32 @@
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+        
         <%
-            }else{
-                //1. Crear una instancia de CarreraDAO
-                ProductoDAO productoDao = new ProductoDAO();
-                //2. Crear una instancia de Carrera
-                Producto producto = new Producto(nombreProducto, Double.parseDouble(precioUnitario));
-                //3. Insertar en la DB la carrera
-                productoDao.saveProducto(producto);
-            %>
+            try{
+               //1. Crear una instancia DAO correpondiente a las carreras
+              ProductoDAO productoDao = new ProductoDAO();
+              
+              String nombreProducto = request.getParameter("nombreProducto");
+              //double precioUnitario = Double.parseDouble(request.getParameter("precioUnitario"));
+              String precioUnitariotmp = request.getParameter("precioUnitario");
+              double precioUnitario = Double.parseDouble(precioUnitariotmp);
+              //String precioUnitario = request.getParameter("precioUnitario");
+              
+              //2. Obtener todas las carreras de la base de datos
+              
+              if (nombreProducto!= null && precioUnitario!= 0) {
+                      productoDao.saveProducto(new Producto(nombreProducto, precioUnitario));
+              }  
+            }catch(NullPointerException nul){
+                nul.printStackTrace();
+            }
+              
+        %>
+        
             <div class="alert alert-success" role="alert">
                 Producto ingresasdo exitosamente <a href="AltasBajasProduc.jsp" class="alert-link">Lista productos</a>. 
             </div>
-            <%
-                }
-                %>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

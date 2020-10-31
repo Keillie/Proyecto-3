@@ -6,20 +6,28 @@ package Modelo;
 class ItemOrden {
     //Propiedades
     private int noLinea; //que será un número correlativo de la orden
-    private int cantidad;
     private Producto producto;
+    private int cantidad;
 
+    public ItemOrden(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+   
+    
     /**
      * Constructor de ItemOrden con sus siguientes paramentros
      * @param noLinea que será un número correlativo de la orden
      * @param cantidad numero de productos
      * @param producto
      */
-    public ItemOrden(int noLinea, int cantidad, Producto producto) {
+    public ItemOrden(int noLinea, Producto producto, int cantidad) {
         this.noLinea = noLinea;
-        this.cantidad = cantidad;
         this.producto = producto;
+        this.cantidad = cantidad;
     }
+
+   
 
     /**
      * Getter y setter implementados para utilizar las variables en el programa

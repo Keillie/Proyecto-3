@@ -32,19 +32,19 @@ public class UsuarioDAO implements Validar {
      */
     @Override
     public int validar(Usuario u) {
-        String sql="SELECT * FROM usuario where Usuario=? and Password=?";
+        String sql="SELECT * FROM usuario where usuario=? and contrasenia=?";
         try{
             //conn = cn.getConnection();
             //conn.VariablesGlobales();
-            //Connection conn = VariablesGlobales.cn.prepareStatement();
+            Connection conn = (Connection) new VariablesGlobales();
             ps = conn.prepareStatement(sql);
             ps.setString(1, u.getUsuarios());
             ps.setString(2, u.getContrasenia());
             rs = ps.executeQuery();
             while(rs.next()){
                 result = result + 1;//Recibe parametros y los iguala
-                u.setUsuarios(rs.getString("Usuario"));
-                u.setContrasenia(rs.getString("Password"));
+                u.setUsuarios(rs.getString("usuario"));
+                u.setContrasenia(rs.getString("contrasenia"));
             }
             if(result == 1){
                 return 1;

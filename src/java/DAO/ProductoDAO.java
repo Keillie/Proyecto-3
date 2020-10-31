@@ -27,7 +27,7 @@ public class ProductoDAO {
                               " FROM productos";
             ResultSet rs = statement.executeQuery(consulta);
             while(rs.next()){
-                productos.add(new Producto(rs.getString("nombreProducto"), rs.getDouble("precioUnitario")));
+                productos.add(new Producto(rs.getString("nombreproducto"), rs.getDouble("preciounitario")));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -43,15 +43,30 @@ public class ProductoDAO {
         
         try {
             Statement statement = VariablesGlobales.conn.createStatement();
-            String dml = "INSERT INTO productos(id, nombreproducto,preciounitario) VALUES("+
-                    producto.getId() + ",'" +
-                        producto.getNombreProducto() + ",'" + producto.getPrecioUnitario() + "')";
+            String dml = "INSERT INTO productos(nombreproducto, preciounitario) VALUES("+
+                    "'" + producto.getNombreProducto() + "','" + 
+                    producto.getPrecioUnitario() + "')";
             System.out.println("dml = " + dml);
             statement.executeUpdate(dml);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        
-        
-    }
+
+    }  
+    
+    /**
+     * Clase deleteProducto realiza la accion de borrar un registro en la tabla producto siendo el ultimo registro en eliminar 
+     * siempre y lo actualiza de la la lista automaticamente
+     */
+    public void deleteProducto(){
+        try {
+            Statement statement = VariablesGlobales.conn.createStatement();
+            String dml = "DELETE FROM productos\n" +
+                         "WHERE id = (SELECT id FROM productos ORDER BY id DESC LIMIT 1);";
+            System.out.println("dml = " + dml);
+            statement.executeUpdate(dml);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }  
 }

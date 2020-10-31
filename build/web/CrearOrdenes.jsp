@@ -4,6 +4,8 @@
     Author     : Otra (Nueva)
 --%>
 
+<%@page import="Modelo.Orden"%>
+<%@page import="DAO.OrdenDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -55,13 +57,20 @@
               <input type="text" class="form-control" id="nombre" name="nombreProducto" aria-describedby="nombreProducto">
             </div>
             <div class="form-group">
-              <label for="cantidad">Cantidad: </label>
-              <input type="text" class="form-control" id="nombre" name="cantida" aria-describedby="cantida">
-            </div>
-            <div class="form-group">
               <label for="precioUnitario">Precio Unitario: </label>
               <input type="text" class="form-control" id="nombre" name="precioUnitario" aria-describedby="precioUnitario">
             </div>
+            <div class="form-group">
+              <label for="cantidad">Cantidad: </label>
+              <input type="text" class="form-control" id="nombre" name="cantida" aria-describedby="cantida">
+            </div>
+            
+            </div>
+            <div class="form-group">
+              <label for="cantidad">Fecha Orden: </label>
+              <input type="text" class="form-control" id="nombre" name="fechaOrden" aria-describedby="fechaOrden">
+            </div>
+            
             <tr><td><label for="estado">Estado: </label></td>
                 <td><select name="estado" id="estado">
                         <option>Pendiente</option>
@@ -84,11 +93,35 @@
                         <option>Paquetería FedEx</option> 
                     </select></td>
             </tr>
-            
             </p>
             <button type="submit" class="btn btn-primary" class="container mt-4 text-center" >Guardar</button>
         </form>
-        
+        <%
+            try{
+               //Creacion de instancia para las ordenes
+              OrdenDAO ordenDao = new OrdenDAO();
+
+              String proveedor = request.getParameter("proveedor");
+              String nombreProducto = request.getParameter("nombreProducto");
+              //double precioUnitario = Double.parseDouble(request.getParameter("precioUnitario"));
+              String precioUnitariotmp = request.getParameter("precioUnitario");
+              double precioUnitario = Double.parseDouble(precioUnitariotmp);
+              String cantidadtmp = request.getParameter("cantidad");
+              int cantidad = Integer.parseInt(cantidadtmp);
+              String fechaOrden = request.getParameter("fechaOrden");
+              String estado = request.getParameter("estado");
+              String diasEnvio = request.getParameter("diasEnvio");
+              String tipoEnvio = request.getParameter("tipoEnvio");
+
+              //Verificar si contienen valores los campos
+              
+              if (proveedor!= null && nombreProducto!= null && precioUnitario!= 0 && cantidad!= 0 && fechaOrden!= null && estado!= null && diasEnvio!= null && tipoEnvio!= null) {
+                      ordenDao.saveOrden(new Orden(proveedor, nombreProducto, precioUnitario, cantidad, fechaOrden, estado, diasEnvio, tipoEnvio));
+              }  
+            }catch(Exception nul){
+                nul.printStackTrace();
+            }
+        %>
         <div class="alert alert-success" role="alert">
                 ¡Orden creada exitosamente! <a href="Ordenes.jsp" class="alert-link">Orden</a>. 
             </div>

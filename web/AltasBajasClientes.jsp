@@ -62,6 +62,11 @@
                  <%
               //1. Crear una instancia DAO correpondiente a las carreras
               ClientesDAO clientesDao = new ClientesDAO();
+              
+              if(request.getParameter("botonEliminar") != null) {
+                  clientesDao.deleteCliente();
+              }
+              
               //2. Obtener todas las carreras de la base de datos
               List<Cliente> clientes = clientesDao.getDBClientes();
               //3. Iterar todas las carreras
@@ -84,7 +89,9 @@
               %> 
             </tbody>
         </table>
-        <button type="submit" class="btn btn-primary" class="container mt-4 text-center" >Eliminar Cliente</button>
+            <form action="AltasBajasClientes.jsp" method="POST">
+                <button type="submit" class="btn btn-primary" id="botonEliminar" name="botonEliminar" class="container mt-4 text-center" >Eliminar Cliente</button>
+            </form>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

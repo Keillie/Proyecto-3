@@ -42,16 +42,31 @@ public class ClientesDAO {
         
         try {
             Statement statement = VariablesGlobales.conn.createStatement();
-            String dml = "INSERT INTO clientes(id, nombre, apellido, correoelectronico, telefono, tipocliente) VALUES("+
-                    cliente.getId() + ",'" + cliente.getNombre() + ",'" + 
-                        cliente.getApellido() + ",'" + cliente.getCorreoElectronico() +
-                    cliente.getTelefono() + ",'" + cliente.getTipoCliente() + "')";
+            String dml = "INSERT INTO clientes(nombre, apellido, correoelectronico, telefono, tipocliente) VALUES("+
+                    "'" + cliente.getNombre() + "','" + 
+                    cliente.getApellido() + "','" + cliente.getCorreoElectronico() + "','" +
+                    cliente.getTelefono() + "','" + cliente.getTipoCliente() + "')";
             System.out.println("dml = " + dml);
             statement.executeUpdate(dml);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        
-        
+
+    }  
+    
+    /**
+     * Metodo sin retorno implementada para utilizar el boton de eleminar recorre la lista y elimina el ultimo registro 
+     * de la tabla y la actualiza
+     */
+    public void deleteCliente(){
+        try {
+            Statement statement = VariablesGlobales.conn.createStatement();
+            String dml = "DELETE FROM clientes\n" +
+                         "WHERE id = (SELECT id FROM clientes ORDER BY id DESC LIMIT 1);";
+            System.out.println("dml = " + dml);
+            statement.executeUpdate(dml);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }  
 }

@@ -1,10 +1,11 @@
-
 <%-- 
     Document   : CrearClientes
     Created on : Oct 26, 2020, 5:20:13 PM
     Author     : Otra (Nueva)
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Cliente"%>
+<%@page import="DAO.ClientesDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,19 +52,19 @@
                 
             <div class="form-group">
               <label for="nombre">Nombre: </label>
-              <input type="text" class="form-control" id="codigo" name="nombre" aria-describedby="nombre" >              
+              <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" >              
             </div>            
             <div class="form-group">
               <label for="apellido">Apellido: </label>
-              <input type="text" class="form-control" id="nombre" name="apellido" aria-describedby="apellido">
+              <input type="text" class="form-control" id="apellido" name="apellido" aria-describedby="apellido">
             </div>
             <div class="form-group">
               <label for="correoElectronico">Correo electronico: </label>
-              <input type="text" class="form-control" id="nombre" name="correoElectronico" aria-describedby="correoElectronico">
+              <input type="text" class="form-control" id="correoElectronico" name="correoElectronico" aria-describedby="correoElectronico">
             </div>
             <div class="form-group">
               <label for="telefono">Telefono: </label>
-              <input type="text" class="form-control" id="nombre" name="telefono" aria-describedby="telefono">
+              <input type="text" class="form-control" id="telefono" name="telefono" aria-describedby="telefono">
             </div>
             <tr><td><label for="tipoCliente">Tipo cliente: </label></td>
                 <td><select name="tipoCliente" id="tipoCliente">
@@ -76,6 +77,26 @@
             </p>
             <button type="submit" class="btn btn-primary" class="container mt-4 text-center" >Guardar</button>
         </form>
+        <%
+              //1. Crear una instancia DAO correpondiente a las carreras
+              ClientesDAO clientesDao = new ClientesDAO();
+              
+              String nombre = request.getParameter("nombre");
+              String apellido = request.getParameter("apellido");
+              String correoElectronico = request.getParameter("correoElectronico");
+              String telefono = request.getParameter("telefono");
+              String tipoCliente = request.getParameter("tipoCliente");
+              //2. Obtener todas las carreras de la base de datos
+              
+              if (nombre != null && 
+                  apellido != null && 
+                  correoElectronico != null && 
+                  telefono != null && 
+                  tipoCliente != null) {
+                      clientesDao.saveCliente(new Cliente(nombre, apellido, correoElectronico, telefono, tipoCliente));
+              } /*else {
+              }*/
+        %> 
         <div class="alert alert-success" role="alert">
                 ¡Cliente ingresado exitosamente! <a href="AltasBajasClientes.jsp" class="alert-link">Lista Clientes</a>. 
             </div>

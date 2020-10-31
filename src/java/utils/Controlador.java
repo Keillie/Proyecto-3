@@ -27,7 +27,7 @@ public class Controlador extends HttpServlet {
         
         String  accion = request.getParameter("accion");
         //Enviar a usuarioDao
-        if(accion.equals("INGRESAR")){
+        if(accion.equals("Ingresar")){
             //el nombre de las cajas de texto
             String usuarios = request.getParameter("txtNombre");
             String contrasenia = request.getParameter("txtContrasenia");

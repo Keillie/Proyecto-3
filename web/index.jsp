@@ -28,7 +28,7 @@
                     <label>Password:</label>
                     <input class ="form-control" type="Password" name="txtContrasenia" placeholder="Password">
                 </div>
-                <input class="btn btn-danger btn-block" type="submit" name ="accion" value="INGRESAR">
+                <input class="btn btn-danger btn-block" type="submit" name ="accion" value="Ingresar">
             </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
